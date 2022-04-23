@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES = editor.c \
             load.c \
             save.c \
-            show.c
+            show.c \
+            shownum.c
 
 INCLUDEPATH += ../text
 

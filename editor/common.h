@@ -19,12 +19,12 @@
  * Выводит содержимое указанного файла на экран
  */
 void show(text txt);
+void shownum(text txt);
 
 /**
  * Загружает содержимое указанного файла
  */
 void load(text txt, char *filename);
-
 
 void save(text txt, char *filename);
 

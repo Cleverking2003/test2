@@ -79,7 +79,12 @@ int main()
             show(txt);
             continue;
         }
-        
+
+        if (strcmp(cmd, "shownum") == 0) {
+            shownum(txt);
+            continue;
+        }
+
         /* Если команда не известна */
         fprintf(stderr, "Unknown command: %s\n", cmd);
     }
