@@ -49,7 +49,7 @@ static node *create_node(const char *contents)
     
     node *nd = (node *) malloc(sizeof(node));
     assert(nd && "Not enough memory!");
-    assert(strlen(contents) > MAXLINE && "Line too long!");
+    assert((strlen(contents) <= MAXLINE) && "Line too long!");
 
     strncpy(nd->contents, contents, MAXLINE);
     nd->contents[MAXLINE] = '\0';    
