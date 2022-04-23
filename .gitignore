@@ -1,5 +1,7 @@
 *.o
 *.txt
-editor
+editor/editor
 *.a
-
+.vscode/
+.qmake.stash
+Makefile
