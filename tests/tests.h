@@ -22,10 +22,6 @@ text init_text(const char *filename) {
     return t;
 }
 
-void deinit_text(text t) {
-    remove_all(t);
-}
-
 TEST(load, no_file) {
     text new_txt = create_text();
     std::string output;
@@ -49,6 +45,15 @@ TEST(save, cant_save) {
     GetOutput(save(txt, "/dev/mem");)
     ASSERT_EQ(output, "The file /dev/mem cannot be opened\n");
     remove_all(txt);
+}
+
+TEST(save, save_empty) {
+    auto txt = create_text();
+    save(txt, "o.txt");
+    std::ifstream file("o.txt");
+    std::stringstream str;
+    str << file.rdbuf();
+    ASSERT_EQ(str.str(), "");
 }
 
 TEST(show, show) {
