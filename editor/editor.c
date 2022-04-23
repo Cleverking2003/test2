@@ -85,6 +85,16 @@ int main()
             continue;
         }
 
+        if (strcmp(cmd, "mcr") == 0) {
+            move_crsr_right(txt);
+            continue;
+        }
+
+        if (strcmp(cmd, "rh") == 0) {
+            remove_first_line(txt);
+            continue;
+        }
+
         /* Если команда не известна */
         fprintf(stderr, "Unknown command: %s\n", cmd);
     }

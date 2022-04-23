@@ -60,5 +60,7 @@ void process_forward(
 void remove_all(text txt);
 
 void move_crsr(text txt, int line, int col);
+void move_crsr_right(text txt);
+void remove_first_line(text txt);
 
 #endif
