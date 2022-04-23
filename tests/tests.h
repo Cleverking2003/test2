@@ -54,7 +54,7 @@ TEST(shownum, shownum) {
     ASSERT_EQ(output, "0: hello\n1: world|\n");
 }
 
-TEST(mcr, can_mcr) {
+TEST(mcf, can_mcf) {
     std::string output;
     GetOutput(move_crsr(txt, 0, 4); show(txt);)
     ASSERT_EQ(output, "hell|o\nworld\n");
@@ -62,7 +62,7 @@ TEST(mcr, can_mcr) {
     ASSERT_EQ(output, "hello|\nworld\n");
 }
 
-TEST(mcr, cannot_mcr) {
+TEST(mcf, cannot_mcf) {
     std::string output;
     GetOutput(move_crsr(txt, 0, 5); show(txt);)
     ASSERT_EQ(output, "hello|\nworld\n");

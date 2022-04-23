@@ -85,7 +85,7 @@ int main()
             continue;
         }
 
-        if (strcmp(cmd, "mcr") == 0) {
+        if (strcmp(cmd, "mcf") == 0) {
             move_crsr_right(txt);
             continue;
         }
