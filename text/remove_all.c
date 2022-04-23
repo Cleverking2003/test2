@@ -17,10 +17,7 @@
 void remove_all(text txt)
 {
     /* Проверяем, имеется ли текст */
-    if (txt == NULL) {
-        fprintf(stderr, "The text doesn't exist!\n");
-        return;
-    }    
+    assert(txt && "The text doesn't exist!");
     
     /* Если список изначально пуст, делать ничего не надо */
     if (txt->length == 0) {

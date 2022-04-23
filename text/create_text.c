@@ -14,19 +14,14 @@
  */
 text create_text()
 {  
-    text txt;
-
     /* Создаем структуру описания текста */
-    if ((txt = (list *) malloc(sizeof(list))) == NULL) {
-        fprintf(stderr, "Not enough memory!\n");
-        exit(EXIT_FAILURE);
-    }
+    text txt = (list *) malloc(sizeof(list));
     
+    assert(txt && "Not enough memory!");
     /* Создаем структуру описания курсора */
-    if ((txt->cursor = (crsr *) malloc(sizeof(crsr))) == NULL) {
-        fprintf(stderr, "Not enough memory!\n");
-        exit(EXIT_FAILURE);
-    }    
+    txt->cursor = (crsr *) malloc(sizeof(crsr));
+
+    assert(txt->cursor && "Not enough memory!");
     
     /* Только что созданный текст не содержит ни одной строки */
     txt->begin = NULL;

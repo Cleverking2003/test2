@@ -1,4 +1,6 @@
 *.o
+*.gcda
+*.gcno
 editor/editor
 *.a
 .vscode/
