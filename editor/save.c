@@ -15,4 +15,5 @@ void save(text txt, char *filename) {
         return;
     }
     process_forward(txt, write_line, file);
+    fclose(file);
 }

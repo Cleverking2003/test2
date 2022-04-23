@@ -19,6 +19,7 @@ HEADERS += tests.h
 
 SOURCES +=  main.cpp \
             ../editor/load.c \
+            ../editor/save.c \
             ../editor/show.c \
             ../editor/shownum.c
 

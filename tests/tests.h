@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+#include <sstream>
 #include <gtest/gtest.h>
 
 extern "C" {
@@ -19,10 +21,36 @@ void init_tests() {
     load(txt, INPUTDIR "/input.txt");
 }
 
+TEST(load, no_file) {
+    text new_txt = create_text();
+    std::string output;
+    GetOutput(load(new_txt, "i.txt");)
+    ASSERT_EQ(output, "The file i.txt cannot be opened\n");
+}
+
+TEST(save, save) {
+    save(txt, "o.txt");
+    std::ifstream file("o.txt");
+    std::stringstream str;
+    str << file.rdbuf();
+    ASSERT_EQ(str.str(), "hello\nworld\n");
+}
+
+TEST(save, cant_save) {
+    std::string output;
+    GetOutput(save(txt, "/dev/mem");)
+    ASSERT_EQ(output, "The file /dev/mem cannot be opened\n");
+}
+
+TEST(show, show) {
+    std::string output;
+    GetOutput(show(txt);)
+    ASSERT_EQ(output, "hello\nworld|\n");
+}
+
 TEST(shownum, shownum) {
-    testing::internal::CaptureStdout();
-    shownum(txt);
-    std::string output = testing::internal::GetCapturedStdout();
+    std::string output;
+    GetOutput(shownum(txt);)
     ASSERT_EQ(output, "0: hello\n1: world|\n");
 }
 
@@ -49,6 +77,8 @@ TEST(rh, rh) {
     std::string output;
     GetOutput(remove_first_line(new_txt); show(new_txt);)
     ASSERT_EQ(output, "world|\n");
+    GetOutput(remove_first_line(new_txt); show(new_txt);)
+    ASSERT_EQ(output, "");
     GetOutput(remove_first_line(new_txt); show(new_txt);)
     ASSERT_EQ(output, "");
 }
