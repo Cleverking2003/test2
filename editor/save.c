@@ -8,7 +8,7 @@ void write_line(int index, char *contents, int cursor, void *data) {
     fprintf(file, "%s\n", contents);
 }
 
-void save(text txt, char *filename) {
+void save(text txt, const char *filename) {
     FILE* file = fopen(filename, "w");
     if (!file) {
         printf("The file %s cannot be opened\n", filename);
