@@ -14,6 +14,12 @@ extern "C" {
     { action } \
     output = testing::internal::GetCapturedStdout();
 
+
+#define GetErr(action) \
+    testing::internal::CaptureStderr(); \
+    { action } \
+    output = testing::internal::GetCapturedStderr();
+
 static const char *input_file = INPUTDIR "/input.txt";
 
 text init_text(const char *filename) {
@@ -64,11 +70,27 @@ TEST(show, show) {
     remove_all(txt);
 }
 
+TEST(show, show_empty) {
+    auto txt = create_text();
+    std::string output;
+    GetErr(show(txt);)
+    ASSERT_EQ(output, "There are no lines left in the text!\n");
+    remove_all(txt);
+}
+
 TEST(shownum, shownum) {
     auto txt = init_text(input_file);
     std::string output;
     GetOutput(shownum(txt);)
     ASSERT_EQ(output, "0: hello\n1: world|\n");
+    remove_all(txt);
+}
+
+TEST(shownum, shownum_empty) {
+    auto txt = create_text();
+    std::string output;
+    GetErr(shownum(txt);)
+    ASSERT_EQ(output, "There are no lines left in the text!\n");
     remove_all(txt);
 }
 
