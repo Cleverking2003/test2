@@ -72,6 +72,26 @@ TEST(shownum, shownum) {
     remove_all(txt);
 }
 
+TEST(m, can_m) {
+    auto txt = init_text(input_file);
+    std::string output;
+    GetOutput(move_crsr(txt, 0, 4); show(txt);)
+    ASSERT_EQ(output, "hell|o\nworld\n");
+    GetOutput(move_crsr(txt, 1, 2); show(txt);)
+    ASSERT_EQ(output, "hello\nwo|rld\n");
+    remove_all(txt);
+}
+
+TEST(m, cannot_m) {
+    auto txt = init_text(input_file);
+    std::string output;
+    GetOutput(move_crsr(txt, 0, 10); show(txt);)
+    ASSERT_EQ(output, "hello|\nworld\n");
+    GetOutput(move_crsr(txt, 3, 2); show(txt);)
+    ASSERT_EQ(output, "hello\nworld\n");
+    remove_all(txt);
+}
+
 TEST(mcf, can_mcf) {
     auto txt = init_text(input_file);
     std::string output;
@@ -92,13 +112,28 @@ TEST(mcf, cannot_mcf) {
     remove_all(txt);
 }
 
-TEST(rh, rh) {
+TEST(rh, rh_many_lines) {
     auto txt = init_text(input_file);
     std::string output;
     GetOutput(remove_first_line(txt); show(txt);)
     ASSERT_EQ(output, "world|\n");
+    remove_all(txt);
+}
+
+TEST(rh, rh_one_line) {
+    auto txt = init_text(input_file);
+    remove_first_line(txt);
+    std::string output;
     GetOutput(remove_first_line(txt); show(txt);)
     ASSERT_EQ(output, "");
+    remove_all(txt);
+}
+
+TEST(rh, rh_no_lines) {
+    auto txt = init_text(input_file);
+    std::string output;
+    remove_first_line(txt);
+    remove_first_line(txt);
     GetOutput(remove_first_line(txt); show(txt);)
     ASSERT_EQ(output, "");
     remove_all(txt);
