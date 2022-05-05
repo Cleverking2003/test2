@@ -111,6 +111,18 @@ TEST(m, cannot_m) {
     ASSERT_EQ(output, "hello|\nworld\n");
     GetOutput(move_crsr(txt, 3, 2); show(txt);)
     ASSERT_EQ(output, "hello\nworld\n");
+    GetOutput(move_crsr(txt, -10, 10); show(txt);)
+    ASSERT_EQ(output, "hello\nworld\n");
+    GetOutput(move_crsr(txt, 3, -2); show(txt);)
+    ASSERT_EQ(output, "hello\nworld\n");
+    remove_all(txt);
+}
+
+TEST(m, empty_text) {
+    auto txt = create_text();
+    std::string output;
+    GetErr(move_crsr(txt, 1, 1); show(txt);)
+    ASSERT_EQ(output, "There are no lines left in the text!\n");
     remove_all(txt);
 }
 
