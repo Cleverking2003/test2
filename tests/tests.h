@@ -20,7 +20,7 @@ extern "C" {
     { action } \
     output = testing::internal::GetCapturedStderr();
 
-static const char *input_file = INPUTDIR "/input.txt";
+static const char *input_file = "./input.txt";
 
 text init_text(const char *filename) {
     text t = create_text();
